@@ -78,6 +78,17 @@ const quadrantLabelsPlugin = {
         ctx.restore();
     }
 };
+const wrap = document.querySelector(".chart-wrap");
+const tip = document.getElementById("quadTip");
+
+const MID_X = 5;
+const MID_Y = 5;
+const quadrantText = {
+    TL: "Flourishing: Those with few adverse experiences and many positive/benevolent experiences. These are those who can function more easily at a higher level",
+    TR: "Struggling: Those with many adverse experiences and many positive experiences. They often feel frustrated because they have many strengths but may be held back by their symptoms.",
+    BL: "Languishing: Those with few adverse experiences and few positive/benevolent experiences. May feel empty and unmotivated.",
+    BR: "Floundering: Those with many adverse experiences and few positive/benevolent experience. At serious risk of mental illnesses like depression and Anxiety, as they lack tools to cope.",
+};
 // Store points here
 const points = [];
 
@@ -120,9 +131,53 @@ if (!stored) {
         "No results found. Please take the quiz.";
 } else {
     const {ACES_sum, BCES_sum} = JSON.parse(stored);
-
+    localStorage.removeItem("results");
     document.getElementById("scores").textContent =
         `ACES: ${ACES_sum}, BCES: ${BCES_sum}`;
     points.push({x: ACES_sum, y: BCES_sum});
     chart.update();
 }
+function getQuadrant(x, y) {
+    // Define how you want boundaries handled when exactly = 5
+    const right = x >= MID_X;
+    const top = y >= MID_Y;
+
+    if (top && !right) return "TL";
+    if (top && right) return "TR";
+    if (!top && !right) return "BL";
+    return "BR";
+}
+
+function hideTip() {
+    tip.style.display = "none";
+}
+
+canvas.addEventListener("mousemove", (e) => {
+    const rect = canvas.getBoundingClientRect();
+
+    // Mouse position relative to canvas (CSS pixels)
+    const px = e.clientX - rect.left;
+    const py = e.clientY - rect.top;
+
+    // Only show tooltip when cursor is inside the plot area
+    const area = chart.chartArea;
+    if (px < area.left || px > area.right || py < area.top || py > area.bottom) {
+        hideTip();
+        return;
+    }
+
+    // Convert pixels -> chart values
+    const xVal = chart.scales.x.getValueForPixel(px);
+    const yVal = chart.scales.y.getValueForPixel(py);
+
+    const q = getQuadrant(xVal, yVal);
+
+    tip.textContent = quadrantText[q];
+    tip.style.display = "block";
+
+    // Position tooltip near cursor (relative to wrapper)
+    const wrapRect = wrap.getBoundingClientRect();
+    tip.style.left = `${e.clientX - wrapRect.left}px`;
+    tip.style.top  = `${e.clientY - wrapRect.top}px`;
+});
+canvas.addEventListener("mouseleave", hideTip);

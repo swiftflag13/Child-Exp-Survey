@@ -1,0 +1,18 @@
+.chart-wrap {
+    position: relative;
+    width: fit-content;
+}
+
+.quad-tip {
+    position: absolute;
+    display: none;
+    max-width: 220px;
+    padding: 8px 10px;
+    border-radius: 8px;
+    background: rgba(20, 20, 20, 0.92);
+    color: white;
+    font-size: 12px;
+    line-height: 1.2;
+    pointer-events: none; /* don’t block the mouse */
+    transform: translate(10px, 10px); /* offset from cursor */
+}
