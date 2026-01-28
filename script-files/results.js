@@ -194,7 +194,7 @@ if (!stored) {
     if(ACES_sum < 5){
         if(BCES_sum < 5){
             select.value = "Languishing";
-            blurb.innerHTML = "Languishing: Those with few adverse experiences and few positive/benevolent experiences. May feel empty and unmotivated.";
+            blurb.innerHTML = "<b><u>Languishing:</u></b> Those with few adverse experiences and few positive/benevolent experiences. May feel empty and unmotivated.";
         }else{
             select.value = "Flourishing";
         }
@@ -202,10 +202,10 @@ if (!stored) {
     else{
         if(BCES_sum < 5){
             select.value = "Floundering";
-            blurb.innerHTML = "Floundering: Those with many adverse experiences and few positive/benevolent experience. At serious risk of mental illnesses like depression and Anxiety, as they lack tools to cope.";
+            blurb.innerHTML = "<b><u>Floundering:</u></b> Those with many adverse experiences and few positive/benevolent experience. At serious risk of mental illnesses like depression and Anxiety, as they lack tools to cope.";
         }else{
             select.value = "Struggling";
-            blurb.innerHTML = "Struggling: Those with many adverse experiences and many positive experiences. They often feel frustrated because they have many strengths but may be held back by their symptoms.";
+            blurb.innerHTML = "<b><u>Struggling:</u></b> Those with many adverse experiences and many positive experiences. They often feel frustrated because they have many strengths but may be held back by their symptoms.";
         }
 
     }

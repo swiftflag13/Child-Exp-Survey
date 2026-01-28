@@ -17,28 +17,18 @@
         <canvas id="xyChart" width="700" height="500"></canvas>
         <!--<div id="quadTip" class="quad-tip"></div>-->
     </div>
-    <p id="blurb">Flourishing: Those with few adverse experiences and many positive/benevolent experiences. These are those who can function more easily at a higher level</p>
-    <div class="email-submission">
-        <form action="https://api.web3forms.com/submit" method="POST">
-            <input type="hidden" name="access_key" value="243d56a1-e344-4fbe-92c3-36ac91a57d29">
-            name
-            <input type="text" name="name" required>
-            email
-            <input type="email" name="email" required>
-            message
-            <textarea name="message" required></textarea>
-            <button type="submit">Submit</button>
-        </form>
-    </div>
+    <p id="blurb"><b><u>Flourishing:</u></b> Those with few adverse experiences and many positive/benevolent experiences. These are those who can function more easily at a higher level</p>
     <h2>How to Understand Your Result:</h2>
-    <p>Based on the complete state model of mental health (also known as the two-continua model), a person's mental health status is determined by the intersection of two separate indicators: the presence or absence of mental illness (psychopathology) and the presence or absence of subjective well-being (emotional, psychological, and social health).</p>
+    <p>Based on the complete state model of mental health, a person's mental health status is determined by the intersection of two separate indicators: the presence or absence of mental illness (psychopathology) and the presence or absence of subjective well-being (emotional, psychological, and social health).</p>
     <p>In the context of childhood development, this framework helps categorize how Adverse Childhood Experiences (ACEs)—such as abuse, neglect, or household dysfunction—and Benevolent Childhood Experiences (BCEs)—such as positive relationships and safe environments—interact to shape a child’s current state and future trajectory</p>
-    <select id="result_type">
+    <label for="result_type"></label><p> Your responses indicate that
+    your childhood was characterized by: <select id="result_type">
         <option selected value="Flourishing">Flourishing</option>
         <option value="Languishing">Languishing</option>
         <option value="Struggling">Struggling</option>
         <option value="Floundering">Floundering</option>
     </select>
+</p>
     <div data-type="Flourishing">
     <h2>Flourishing Clients – Complete Mental Health:</h2>
     <p>Definition: This state is characterized by high levels of well-being and low levels of mental illness. A flourishing child experiences positive emotions, functions well psychologically and socially, and is free of significant psychopathology.</p>
@@ -76,8 +66,27 @@
         <li><b>Toxic Stress:</b> The toxic stress associated with high ACEs and a "floundering" state can alter brain development and immune system function. This correlates with a higher risk of chronic conditions in adulthood, including heart disease, cancer, diabetes, and asthma.</li>
         <li> <b>Protective Factors:</b> Conversely, flourishing (high well-being) predicts better physical health and fewer limitations in daily activities,. Preventing ACEs and promoting BCEs can reduce risky behaviors (like smoking and heavy drinking) and lower the risk of chronic diseases</li>
     </ul>
-    <p>This might be a very different way of looking at yourself and your childhood. We invite you to contact us to see about taking with one of our licensed psychologists</p>
-
+    <p>This might be a very different way of looking at yourself and your childhood. We invite
+        you to use the form below – or call (858) 609-1549 to contact us to get more information
+        about your result.</p>
+    <div class="email-submission">
+        <form action="https://api.web3forms.com/submit" method="POST">
+            <input type="hidden" name="access_key" value="243d56a1-e344-4fbe-92c3-36ac91a57d29">
+            Name
+            <label>
+                <input type="text" name="name" required>
+            </label>
+            Email
+            <label>
+                <input type="email" name="email" required>
+            </label>
+            Message
+            <label>
+                <textarea name="message" required></textarea>
+            </label>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
     <!-- chart.js code -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </div>
