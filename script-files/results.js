@@ -106,8 +106,9 @@ const chart = new Chart(ctx, {
         }]
     },
     options: {
-        responsive: false,              // <-- static pixel size
+        responsive: true,              // <-- non-static pixel size
         animation: false,               // optional: snappier updates
+        maintainAspectRatio: false,
         scales: {
             x: {
                 type: "linear",
